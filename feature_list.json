@@ -1,0 +1,220 @@
+{
+  "project": "学术论文写作助手",
+  "version": "1.0.0",
+  "totalFeatures": 15,
+  "completedFeatures": 0,
+  "features": [
+    {
+      "id": 1,
+      "category": "core",
+      "name": "Agent 1: Work & Journal Analyzer",
+      "description": "理解用户工作内容，提取关键信息并推荐期刊",
+      "steps": [
+        "提取工作标题",
+        "识别工作类型(算法/实验/理论/综述/应用)",
+        "提取关键要点",
+        "提取方法论",
+        "提取结果",
+        "推荐目标期刊"
+      ],
+      "passes": false,
+      "priority": "high"
+    },
+    {
+      "id": 2,
+      "category": "core",
+      "name": "Agent 2: Writing Style Analyst",
+      "description": "分析目标期刊的写作风格",
+      "steps": [
+        "从PubMed获取期刊论文",
+        "分析Abstract风格",
+        "分析Introduction风格",
+        "分析Method风格",
+        "分析Results风格",
+        "分析Discussion风格",
+        "生成写作风格指南"
+      ],
+      "passes": false,
+      "priority": "high"
+    },
+    {
+      "id": 3,
+     core",
+      "name": "Agent 3: Workload Estimator",
+ "category": "      "description": "评估完成论文所需工作量",
+      "steps": [
+        "分析用户工作完成度",
+        "评估目标期刊要求",
+        "计算各章节工作量",
+        "给出时间预估"
+      ],
+      "passes": false,
+      "priority": "high"
+    },
+    {
+      "id": 4,
+      "category": "core",
+      "name": "Agent 4: Gap Analyzer",
+      "description": "评估差距并给出优化建议",
+      "steps": [
+        "对比用户工作与期刊要求",
+        "识别差距项",
+        "生成优化建议清单"
+      ],
+      "passes": false,
+      "priority": "high"
+    },
+    {
+      "id": 5,
+      "category": "core",
+      "name": "Agent 5: Paper Draft Writer",
+      "description": "起草学术论文",
+      "steps": [
+        "根据风格指南起草Abstract",
+        "起草Introduction",
+        "起草Method",
+        "起草Results",
+        "起草Discussion",
+        "整合完整论文草稿"
+      ],
+      "passes": false,
+      "priority": "high"
+    },
+    {
+      "id": 6,
+      "category": "llm",
+      "name": "LLM 集成",
+      "description": "接入 LLM API 实现智能对话",
+      "steps": [
+        "选择 LLM 提供商",
+        "配置 API Key",
+        "实现 Agent 与 LLM 的通信",
+        "处理上下文管理"
+      ],
+      "passes": false,
+      "priority": "high"
+    },
+    {
+      "id": 7,
+      "category": "data",
+      "name": "PubMed API 集成",
+      "description": "接入 PubMed 获取期刊论文",
+      "steps": [
+        "实现论文搜索",
+        "获取论文摘要",
+        "解析返回数据",
+        "缓存搜索结果"
+      ],
+      "passes": true,
+      "priority": "high"
+    },
+    {
+      "id": 8,
+      "category": "data",
+      "name": "用户上传功能",
+      "description": "支持用户上传工作文档",
+      "steps": [
+        "创建文件上传API",
+        "保存文件到本地",
+        "记录文件元数据",
+        "支持PDF/Word等格式"
+      ],
+      "passes": false,
+      "priority": "medium"
+    },
+    {
+      "id": 9,
+      "category": "data",
+      "name": "对话历史记录",
+      "description": "保存和恢复对话历史",
+      "steps": [
+        "创建对话历史表",
+        "实现保存对话",
+        "实现加载历史",
+        "实现会话恢复"
+      ],
+      "passes": false,
+      "priority": "medium"
+    },
+    {
+      "id": 10,
+      "category": "data",
+      "name": "数据库持久化",
+      "description": "完善数据存储",
+      "steps": [
+        "优化SQLite配置",
+        "实现自动保存",
+        "实现数据迁移"
+      ],
+      "passes": true,
+      "priority": "medium"
+    },
+    {
+      "id": 11,
+      "category": "ui",
+      "name": "Web 界面",
+      "description": "用户友好的Web界面",
+      "steps": [
+        "项目列表页面",
+        "工作输入页面",
+        "期刊搜索页面",
+        "结果显示页面"
+      ],
+      "passes": true,
+      "priority": "high"
+    },
+    {
+      "id": 12,
+      "category": "ui",
+      "name": "PDF 导出",
+      "description": "导出论文为PDF格式",
+      "steps": [
+        "集成PDF生成库",
+        "实现导出功能",
+        "优化排版样式"
+      ],
+      "passes": false,
+      "priority": "low"
+    },
+    {
+      "id": 13,
+      "category": "ui",
+      "name": "LaTeX 导出",
+      "description": "导出论文为LaTeX格式",
+      "steps": [
+        "生成LaTeX模板",
+        "实现转换功能",
+        "支持公式渲染"
+      ],
+      "passes": false,
+      "priority": "low"
+    },
+    {
+      "id": 14,
+      "category": "system",
+      "name": "用户认证",
+      "description": "用户登录和权限管理",
+      "steps": [
+        "实现注册功能",
+        "实现登录功能",
+        "实现JWT认证",
+        "实现权限控制"
+      ],
+      "passes": false,
+      "priority": "low"
+    },
+    {
+      "id": 15,
+      "category": "system",
+      "name": "多语言支持",
+      "description": "支持英文和其他语言",
+      "steps": [
+        "添加国际化配置",
+        "翻译UI文本",
+        "支持多语言输入"
+      ],
+      "passes": false,
+      "priority": "low"
+    }
+  ]
+}

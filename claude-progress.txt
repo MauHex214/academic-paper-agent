@@ -1,0 +1,41 @@
+# Academic Paper Agent - Progress Log
+
+## Project Info
+- Name: 学术论文写作助手
+- Version: 1.0.0
+- Created: 2026-02-15
+
+## Progress Summary
+- Total Features: 15
+- Completed: 3
+- In Progress: 0
+- Remaining: 12
+
+## Completed Features
+1. [x] PubMed API 集成 (ID: 7)
+2. [x] 数据库持久化 (ID: 10)
+3. [x] Web 界面基础 (ID: 11)
+
+## In Progress
+None
+
+## Session History
+
+### Session 1 (2026-02-15)
+- 初始化项目框架
+- 添加 SQLite 数据库支持
+- 添加 PubMed API 集成
+- 添加基础 Web UI
+- 提交: init - 初始化项目框架
+
+### Session 2 (2026-02-15)
+- 按照 Anthropic 文章改造项目
+- 添加 feature_list.json
+- 添加 claude-progress.txt
+- 添加 init.sh
+- 提交: add - 添加长时运行Agent框架
+
+## Notes
+- 使用增量工作模式
+- 每次只完成一个功能
+- 完成后更新 feature_list.json 并提交 git

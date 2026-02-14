@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学术论文写作助手</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    header { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    h1 { color: #333; font-size: 24px; }
+    .main { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+    .sidebar { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .content { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .btn { background: #007AFF; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+    .btn:hover { background: #0056b3; }
+    .btn-secondary { background: #6c757d; }
+    .input-group { margin-bottom: 15px; }
+    .input-group label { display: block; margin-bottom: 5px; font-weight: 500; }
+    .input-group input, .input-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+    .input-group textarea { min-height: 100px; resize: vertical; }
+    .project-list { list-style: none; }
+    .project-item { padding: 10px; border-bottom: 1px solid #eee; cursor: pointer; }
+    .project-item:hover { background: #f8f9fa; }
+    .project-item.active { background: #e7f1ff; }
+    .agent-flow { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+    .agent-step { background: #f0f0f0; padding: 8px 16px; border-radius: 20px; font-size: 12px; }
+    .agent-step.active { background: #007AFF; color: #fff; }
+    .result-section { margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px; }
+    .result-section h3 { font-size: 16px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📝 学术论文写作助手</h1>
+    </header>
+    
+    <div class="main">
+      <aside class="sidebar">
+        <h3>项目列表</h3>
+        <ul class="project-list" id="projectList">
+          <li class="project-item">加载中...</li>
+        </ul>
+        <button class="btn" onclick="createProject()" style="margin-top: 15px; width: 100%;">+ 新建项目</button>
+      </aside>
+      
+      <main class="content">
+        <div class="agent-flow">
+          <span class="agent-step">1. 分析工作</span>
+          <span class="agent-step">2. 风格分析</span>
+          <span class="agent-step">3. 工作量评估</span>
+          <span class="agent-step">4. 差距分析</span>
+          <span class="agent-step">5. 起草论文</span>
+        </div>
+        
+        <div class="input-group">
+          <label>描述你的工作内容</label>
+          <textarea id="workDescription" placeholder="例如：我完成了一个基于深度学习的图像分割算法，在XXX数据集上达到了SOTA效果..."></textarea>
+        </div>
+        
+        <div class="input-group">
+          <label>目标期刊（可选）</label>
+          <input type="text" id="targetJournal" placeholder="例如：Nature, Science, CVPR...">
+        </div>
+        
+        <button class="btn" onclick="runPipeline()">开始生成论文</button>
+        
+        <div id="results"></div>
+      </main>
+    </div>
+  </div>
+  
+  <script>
+    async function loadProjects() {
+      const res = await fetch('/api/projects');
+      const projects = await res.json();
+      const list = document.getElementById('projectList');
+      list.innerHTML = projects.length ? projects.map(p => 
+        `<li class="project-item" onclick="selectProject(${p.id})">${p.name}</li>`
+      ).join('') : '<li class="project-item">暂无项目</li>';
+    }
+    
+    async function createProject() {
+      const name = prompt('请输入项目名称：');
+      if (!name) return;
+      await fetch('/api/projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, description: '' })
+      });
+      loadProjects();
+    }
+    
+    async function runPipeline() {
+      const description = document.getElementById('workDescription').value;
+      const journal = document.getElementById('targetJournal').value;
+      
+      if (!description) {
+        alert('请输入工作内容');
+        return;
+      }
+      
+      document.getElementById('results').innerHTML = '<p>处理中...</p>';
+      
+      // TODO: 调用后端 Agent Pipeline
+      setTimeout(() => {
+        document.getElementById('results').innerHTML = `
+          <div class="result-section">
+            <h3>分析结果</h3>
+            <p>工作类型: 图像分割/深度学习</p>
+            <p>建议期刊: CVPR, ICCV, ECCV</p>
+          </div>
+        `;
+      }, 1000);
+    }
+    
+    loadProjects();
+  </script>
+</body>
+</html>
