@@ -125,3 +125,20 @@ bun run dev
 - [x] PubMed API
 - [x] 数据库持久化
 - [x] 基础 Web UI
+
+## Git 配置
+
+### 远程仓库
+- 地址: https://github.com/MauHex214/academic-paper-agent
+- 凭证: 已存储在 `~/.git-credentials`，无需每次输入
+
+### 提交流程
+完成功能后，执行以下命令提交到 GitHub：
+```bash
+git add .
+git commit -m "feat: 添加XXX功能"
+git push
+```
+
+### 下次会话
+新的对话中可以直接说 "帮我提交到 Git"，会自动使用已保存的凭证。
