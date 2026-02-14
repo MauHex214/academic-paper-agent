@@ -39,9 +39,9 @@
     },
     {
       "id": 3,
-     core",
+      "category": "core",
       "name": "Agent 3: Workload Estimator",
- "category": "      "description": "评估完成论文所需工作量",
+      "description": "评估完成论文所需工作量",
       "steps": [
         "分析用户工作完成度",
         "评估目标期刊要求",
